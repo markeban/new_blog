@@ -3,6 +3,7 @@ defmodule NewBlogWeb.PostController do
 
   alias NewBlog.Posts
   alias NewBlog.Posts.Post
+  alias NewBlog.Users
 
   def index(conn, _params) do
     posts = Posts.list_posts()
@@ -11,12 +12,13 @@ defmodule NewBlogWeb.PostController do
 
   def new(conn, _params) do
     # require IEx; IEx.pry
+    users = Users.list_users
     changeset = Posts.change_post(%Post{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", changeset: changeset, users: users)
   end
 
   def create(conn, %{"post" => post_params}) do
-    require IEx; IEx.pry
+    # require IEx; IEx.pry
     case Posts.create_post(post_params) do
       {:ok, post} ->
         conn
@@ -29,7 +31,8 @@ defmodule NewBlogWeb.PostController do
 
   def show(conn, %{"id" => id}) do
     post = Posts.get_post!(id)
-    render(conn, "show.html", post: post)
+    user = Posts.user(id) 
+    render(conn, "show.html", post: post, user: user)
   end
 
   def edit(conn, %{"id" => id}) do

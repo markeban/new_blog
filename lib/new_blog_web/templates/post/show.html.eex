@@ -14,7 +14,7 @@
 
   <li>
     <strong>User:</strong>
-    <%= @post.user_id %>
+    <%= @user.name %>
   </li>
 
 </ul>

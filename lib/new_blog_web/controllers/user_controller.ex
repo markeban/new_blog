@@ -3,6 +3,12 @@ defmodule NewBlogWeb.UserController do
 
   alias NewBlog.Users
 
+  def index(conn, _params) do
+    users = Users.list_users()
+    render(conn, "index.html", users: users, mood: "coolness")
+  end
+
+
   def create(conn, %{"user" => user_params}) do
     case Users.create_user(user_params) do
       {:ok, user} ->

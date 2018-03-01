@@ -7,8 +7,7 @@ defmodule NewBlog.Posts.Post do
   schema "posts" do
     field :body, :string
     field :title, :string
-    field :user_id, :integer
-
+    belongs_to :user, NewBlog.User
     timestamps()
   end
 

@@ -8,7 +8,7 @@ defmodule NewBlog.User do
     field :bio, :string
     field :email, :string
     field :name, :string
-
+    has_many :posts, NewBlog.Posts.Post
     timestamps()
   end
 

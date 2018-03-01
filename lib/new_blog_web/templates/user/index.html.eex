@@ -1,0 +1,22 @@
+<h2>Users</h2>
+<h3><%= @mood %></h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Bio</th>
+      <th>Email</th>
+      <th>Name</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for user <- @users do %>
+    <tr>
+      <td><%= user.bio %></td>
+      <td><%= user.email %></td>
+      <td><%= user.name %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

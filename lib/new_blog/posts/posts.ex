@@ -21,6 +21,7 @@ defmodule NewBlog.Posts do
     Repo.all(Post)
   end
 
+
   @doc """
   Gets a single post.
 
@@ -101,5 +102,9 @@ defmodule NewBlog.Posts do
   def change_post(%Post{} = post) do
     # require IEx; IEx.pry
     Post.changeset(post, %{})
+  end
+
+  def user(post_id) do
+    Repo.get(NewBlog.User, post_id)
   end
 end

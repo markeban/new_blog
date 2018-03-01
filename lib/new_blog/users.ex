@@ -14,4 +14,9 @@ defmodule NewBlog.Users do
     |> Repo.insert()
   end
 
+  def posts(user_id) do
+    # Repo.one(from u in User, where: u.id == 1, preload: [:posts])
+    Repo.one(from u in User, where: u.id == ^user_id, preload: [:posts]).posts
+  end
+
 end
