@@ -8,6 +8,11 @@ defmodule NewBlogWeb.UserController do
     render(conn, "index.html", users: users, mood: "coolness")
   end
 
+  def show(conn, %{"id" => id}) do
+    user = Users.get_user!(id)
+    posts = Users.posts(id)
+    render(conn, "show.html", user: user, posts: posts)
+  end
 
   def create(conn, %{"user" => user_params}) do
     case Users.create_user(user_params) do
